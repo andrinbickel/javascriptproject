@@ -1,0 +1,108 @@
+function checkLogin() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        if (username === "andrin" && password === "test1234") {
+            window.open("https://www.example.com");
+            return false;
+        } else {
+            // Show the error message
+            document.getElementById("error").style.display = "block";
+            return false;
+        }
+    }
+
+    const validRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-z]+$/;
+        document.querySelectorAll(".form__input").forEach(inputElement => {
+            inputElement.addEventListener("blur", e => {
+                console.log (e);
+                if (e.target.id === "signupEmail" && !e.value.match(validRegex)) {
+                        setInputError(inputElement, "Email is invalid");
+                    }
+                });
+
+            inputElement.addEventListener("input", e => {
+                clearInputError(inputElement);
+            });
+        });
+
+        document.querySelector("#createAccount").addEventListener("submit", event => {
+                event.preventDefault();
+
+                function preventDefault() {
+                }
+
+                const signupUsername = document.querySelector("#signupUsername").value;
+                const value = signupUsername.value;
+
+                const signupEmail = document.querySelector("#signupEmail").value;
+                const value2 = signupEmail.value;
+
+                const signuppassword = document.querySelector("#signup-password").value;
+                const value3 = signuppassword.value;
+
+                const signupconf = document.querySelector("#signuppasswordconf").value;
+                const value4 = signupconf.value;
+
+                const regex1 = /^[a-z0-9_-]{3,15}$/;
+                const regex2 = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+                const regex3 = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+
+
+                if (regex1.match(value) && regex2.match(value2) && regex3.match(value3) && value.match(value3)) {
+                    preventDefault();
+                    loginForm.classList.remove("form--hidden");
+                    createAccountForm.classList.add("form--hidden");
+                } else {
+                    setFormMessage(
+                        event.target,
+                        "error",
+                        "Incorrect username or password. Please try again."
+                    );
+                }
+            });
+
+
+            document.querySelector("#createAccount").addEventListener("submit", event => {
+                    event.preventDefault();
+
+                    const signupUsername = document.querySelector("#signupUsername").value;
+                    const signupEmail = document.querySelector("#signupEmail").value;
+                    const signupPassword = document.querySelector("#signup-password").value;
+                    const signupPasswordConf = document.querySelector("#signuppasswordconf").value;
+
+                    const regex1 = /^[a-z0-9_-]{3,15}$/;
+                    const regex2 = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+                    const regex3 = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+
+                    if (regex1.test(signupUsername) && regex2.test(signupEmail) && regex3.test(signupPassword) && signupPassword === signupPasswordConf) {
+                        loginForm.classList.remove("form--hidden");
+                        createAccountForm.classList.add("form--hidden");
+                        const accountData = {
+                            username: signupUsername,
+                            email: signupEmail,
+                            password: signupPassword
+                        };
+                        const accountDataJson = JSON.stringify(accountData);
+                    } else {
+                        setFormMessage(event.target, "error", "Invalid Input");
+                    }
+                });
+
+
+
+
+                loginForm.addEventListener("submit", e => {
+                        e.preventDefault();
+                        const enteredUsername = document.querySelector("#username").value;
+                        const enteredPassword = document.querySelector("#password").value;
+
+                        // parse the JSON data from accountDataJson
+                        const accountData = JSON.parse(accountDataJson);
+
+                        if (enteredUsername === accountData.username && enteredPassword === accountData.password) {
+                            setFormMessage(loginForm, "success", "Logged in Successfully");
+                            window.location = "http://www.example.com";
+                        } else {
+                            setFormMessage(loginForm, "error", "Incorrect username or password. Please try again.");
+                        }
+                    });

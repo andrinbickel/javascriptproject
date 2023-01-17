@@ -1,0 +1,8 @@
+<script src="https://www.google.com/recaptcha/enterprise.js?render=6Lc8WP8jAAAAAKO7vSkQORj5DfaX9PHQKdGdFo3R"></script>
+<script>
+grecaptcha.enterprise.ready(function() {
+    grecaptcha.enterprise.execute('6Lc8WP8jAAAAAKO7vSkQORj5DfaX9PHQKdGdFo3R', {action: 'login'}).then(function(token) {
+       ...
+    });
+});
+</script>
