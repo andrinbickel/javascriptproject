@@ -7,16 +7,12 @@
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
-<div class="container">
-
-    <div class="">
-        <div class="form-input-group">
-            <div class="form-input g-recaptcha" data-sitekey="6LczKgAkAAAAAOi6dugV0lsqZckb1wg4TamxDZ3-"></div>
-        </div>
-        <button class="form-button" type="submit" onclick="submitForm()">Continue</button>
-
+<form action="success.html" method="post" onsubmit="return submitForm()">
+    <div class="form-input-group">
+        <div class="form-input g-recaptcha" data-sitekey="6LczKgAkAAAAAOi6dugV0lsqZckb1wg4TamxDZ3-"></div>
     </div>
-</div>
+    <button class="form-button" type="submit">Continue</button>
+</form>
 <script src="script.js"></script>
 </body>
 </html>
