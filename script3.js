@@ -49,59 +49,41 @@ document.addEventListener("DOMContentLoaded", () => {
             setFormMessage(loginForm, "error", "Incorrect username or password. Please try again.");
         }
     });
+    document.querySelectorAll(".form-input").forEach(inputElement => {
+        inputElement.addEventListener("blur", e => {
+            if (e.target.id === "signupUsername" && e.target.value.length > 0 && e.target.value.length < 3) {
+                setInputError(inputElement, "De Benutzername muess mindestens 3 Zeiche ha!");
+            }
+        });
+
+        inputElement.addEventListener("input", e => {
+            clearInputError(inputElement);
+        });
+    });
+
     document.querySelector("#createAccount").addEventListener("submit", event => {
         event.preventDefault();
 
-        const signupUsername = document.querySelector("#signupUsername");
-        const signupEmail = document.querySelector("#signupEmail");
-        const signupPassword = document.querySelector("#signup-password");
-        const signupPasswordConf = document.querySelector("#signuppasswordconf");
-        const regex1 = /^[a-zA-Z0-9_-]{3,15}$/;
-        const regex2 = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const signupUsername = document.querySelector("#signupUsername").value;
+        const signupEmail = document.querySelector("#signupEmail").value;
+        const signupPassword = document.querySelector("#signup-password").value;
+        const signupPasswordConf = document.querySelector("#signuppasswordconf").value;
+        const regex1 = /^[a-z0-9_-]{3,15}$/;
+        const regex2 = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
         const regex3 = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
-        let usernameValid = true;
-        let emailValid = true;
-        let passwordValid = true;
-        let passwordConfValid = true;
-
-        if (!regex1.test(signupUsername.value)) {
-            setInputError(signupUsername, "Invalid username. It should contain 3-15 alphanumeric characters, underscores and/or hyphens.");
-            usernameValid = false;
-        } else {
-            clearInputError(signupUsername);
-        }
-
-        if (!regex2.test(signupEmail.value)) {
-            setInputError(signupEmail, "Invalid email address.");
-            emailValid = false;
-        } else {
-            clearInputError(signupEmail);
-        }
-
-        if (!regex3.test(signupPassword.value)) {
-            setInputError(signupPassword, "Invalid password. It should contain at least one uppercase letter, one lowercase letter, one number and one special character and be at least 8 characters long.");
-            passwordValid = false;
-        } else {
-            clearInputError(signupPassword);
-        }
-
-        if (signupPassword.value !== signupPasswordConf.value) {
-            setInputError(signupPasswordConf, "Passwords do not match.");
-            passwordConfValid = false;
-        } else {
-            clearInputError(signupPasswordConf);
-        }
-
-        if (usernameValid && emailValid && passwordValid && passwordConfValid) {
+        
+        if (regex1.test(signupUsername) && regex2.test(signupEmail) && regex3.test(signupPassword) && signupPassword === signupPasswordConf) {
             loginForm.classList.remove("form-hidden");
             createAccountForm.classList.add("form-hidden");
             const accountData = {
-                "username": signupUsername.value,
-                "email": signupEmail.value,
-                "password": signupPassword.value
+                "username": signupUsername,
+                "email": signupEmail,
+                "password": signupPassword
             };
             accountDataJson = JSON.stringify(accountData);
             setFormMessage(createAccountForm, "success", "Account created successfully");
+        } else {
+            setFormMessage(createAccountForm, "error", "Invalid Input");
         }
     });
     function submitForm() {
@@ -116,5 +98,3 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-
-
