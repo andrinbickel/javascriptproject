@@ -13,9 +13,9 @@ body {
     justify-content: center;
     font-size: 18px;
 
-    background: url(#);
+    /*background: url(0084.JPG);*/
     background: var(--color-primary);
-    background-size: cover;
+    background-size: 100%;
 }
 
 .container {
@@ -28,12 +28,12 @@ body {
     background: whitesmoke;
 }
 .container,
-.form__input,
-.form__button {
+.form-input,
+.form-button {
     font: 500 1rem Quicksand , sans-serif;
 }
 
-.form--hidden {
+.form-hidden {
     display: none;
 
 }
@@ -45,27 +45,27 @@ body {
     margin-bottom: 0;
 }
 
-.form__title {
+.form-title {
     margin-bottom: 2rem;
     text-align: center;
 }
 
-.form__message {
+.form-message {
     text-align: center;
     margin-bottom: 1rem;
 }
 
-.form__message--success {
+.form-message-success {
     color: var(--color-success)
 }
-.form__message--error {
+.form-message-error {
     color: var(--color-error)
 }
-.form__input-group {
+.form-input-group {
     margin-bottom: 1rem;
 }
 
-.form__input {
+.form-input {
     display: block;
     width: 100%;
     padding: 0.75rem;
@@ -76,22 +76,22 @@ body {
     background: azure;
     transition: background 0.2s, border-color 0.2s;
 }
-.form__input:focus {
+.form-input:focus {
     border-color: var(--color-primary);
     background: #cccccc;
 }
 
-.form__input--error {
+.form-input-error {
     color: var(--color-error);
     border-color: var(--color-error);
 }
-.form__input-error-message {
+.form-input-error-message {
     margin-top: 0.5rem;
     font-size: 0.85rem;
     color: var(--color-error);
 }
 
-.form__button {
+.form-button {
     width: 100%;
     padding: 1rem 2rem;
     font-weight: bold;
@@ -103,28 +103,28 @@ body {
     cursor: pointer;
     background: var(--color-primary);
 }
-.form__button:hover {
+.form-button:hover {
     background: var(--color-primary-dark);
 }
-.form__button:active {
+.form-button:active {
     transform: scale(0.98);
 }
-.form__text {
+.form-text {
     text-align: center;
 }
-.form__link {
+.form-link {
     color: var(--color-secondary);
     text-decoration: none;
     cursor: pointer;
 }
-.form__link:hover {
+.form-link:hover {
     text-decoration: underline
 ;
 }
 #error {
     display: none;
 }
-.margin__left {
+.margin-left {
 
     display: flex;
     flex-direction: column;
@@ -139,7 +139,7 @@ body {
     width: 100px;
     margin: 0 auto;
 }
-.g-recaptcha, .form__button2 {
+.g-recaptcha, .form-button2 {
     width: 100px;
 
     font-weight: bold;
