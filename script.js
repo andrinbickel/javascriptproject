@@ -85,4 +85,16 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             setFormMessage(createAccountForm, "error", "Invalid Input");
         }
-    });});
+    });
+    function submitForm() {
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LczKgAkAAAAAOi6dugV0lsqZckb1wg4TamxDZ3-', {action: 'homepage'}).then(function(token) {
+                // check if the captcha is valid
+                if(token.length > 0) {
+                    // redirect to another page
+                    location.href = "https://fcwb.ch/";
+                }
+            });
+        });
+    }
+});
