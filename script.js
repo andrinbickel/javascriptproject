@@ -49,30 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    loginForm.addEventListener("submit", e => {
-        e.preventDefault();
-
-        //Konstanten werden erstellt welche die Values von Username und Passwort beinhalten
-        //Ebenfalls werden die Daten im Json mit der parse funktion gelesen und extrahiert, auch dies
-        //wird in einer Konstante zusammengefasst
-
-        const enteredUsername = document.querySelector("#username").value;
-        const enteredPassword = document.querySelector("#password").value;
-
-        const accountData = JSON.parse(accountDataJson);
-
-        //die Daten aus dem Json werden mit der Eingabe des Users verglichen
-        //Bei übereinstimmung wird die success message angezeigt und der User wird auf die Captcha Seite weitergeleitet
-        //Bei keiner übereinstimmung wird die error message angezeigt, nichts weiteres passiert
-
-        if (enteredUsername === accountData.username && enteredPassword === accountData.password) {
-            setFormMessage(loginForm, "success", "erfolgrich igloggt");
-            window.location = "captcha.html";
-        } else {
-            setFormMessage(loginForm, "error", "Benutzername oder Passwort isch falsch.");
-        }
-    });
-
 
 
     document.querySelector("#createAccount").addEventListener("submit", event => {
@@ -145,6 +121,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
             accountDataJson = JSON.stringify(accountData);
             setFormMessage(createAccountForm, "success", "Profil isch erfolgrich erstellt worde.");
+        }
+    });
+
+    loginForm.addEventListener("submit", e => {
+        e.preventDefault();
+
+        //Konstanten werden erstellt welche die Values von Username und Passwort beinhalten
+        //Ebenfalls werden die Daten im Json mit der parse funktion gelesen und extrahiert, auch dies
+        //wird in einer Konstante zusammengefasst
+
+        const enteredUsername = document.querySelector("#username").value;
+        const enteredPassword = document.querySelector("#password").value;
+
+        const accountData = JSON.parse(accountDataJson);
+
+        //die Daten aus dem Json werden mit der Eingabe des Users verglichen
+        //Bei übereinstimmung wird die success message angezeigt und der User wird auf die Captcha Seite weitergeleitet
+        //Bei keiner übereinstimmung wird die error message angezeigt, nichts weiteres passiert
+
+        if (enteredUsername === accountData.username && enteredPassword === accountData.password) {
+            setFormMessage(loginForm, "success", "erfolgrich igloggt");
+            window.location = "captcha.html";
+        } else {
+            setFormMessage(loginForm, "error", "Benutzername oder Passwort isch falsch.");
         }
     });
 
