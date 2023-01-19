@@ -1,20 +1,22 @@
-body {
-    --color-primary: #cc3dff;
-    --color-primary-dark: #a83cde;
-    --color-secondary: #be2467;
-    --color-error: #a65463;
-    --color-success: #f3df97;
-    --border-radius: 4px;
 
-    margin: 0;
+
+body {
+    --color-primary: #7b87a9;
+    --color-primary-dark: #4e5470;
+    --color-secondary: #262626;
+    --color-error: #a65463;
+    --color-success: #97ff53;
+    --border-radius: 15px;
+
+    margin: 0px;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
 
-    /*background: url(0084.JPG);*/
-    background: var(--color-primary);
+
+    background: url("0089.JPG");
     background-size: 100%;
 }
 
@@ -23,14 +25,20 @@ body {
     max-width: 400px;
     margin: 1rem;
     padding: 2rem;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
     border-radius: var(--border-radius);
-    background: whitesmoke;
+    background: rgba(123, 135, 169, 0.4);
+
 }
 .container,
 .form-input,
 .form-button {
-    font: 500 1rem Quicksand , sans-serif;
+    font-family:  Manrope, sans-serif;
+    color: var(--color-secondary);
+}
+.font {
+    font-family:  Manrope, sans-serif;
+    color: var(--color-secondary);
 }
 
 .form-hidden {
@@ -116,59 +124,18 @@ body {
     color: var(--color-secondary);
     text-decoration: none;
     cursor: pointer;
+    background: rgba(255, 255, 255, 0.34);
 }
 .form-link:hover {
-    text-decoration: underline
-;
+    text-decoration: underline;
+    background: rgba(255, 255, 255, 0.84);
+
 }
 #error {
     display: none;
 }
-.margin-left {
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-    margin: 0 auto;
-}
-/*.container2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100px;
-    margin: 0 auto;
-}
-.captcha-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.white-box {
-    background-color: white;
-    padding: 50px;
-    border-radius: var(--border-radius);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.g-recaptcha, .form-button2 {
-    width: 100px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #fff;
-    border: none;
-    border-radius: var(--border-radius);
-    outline: none;
-    cursor: pointer;
-    background: var(--color-primary);
-}
-
-.form-button2-container {
-    margin-top: 10px;
-}*/
 
 
 

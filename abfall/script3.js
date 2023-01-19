@@ -1,23 +1,3 @@
-let accountDataJson = "";
-
-function setFormMessage(formElement, type, message) {
-    const messageElement = formElement.querySelector(".form-message");
-
-    messageElement.textContent = message;
-    messageElement.classList.remove("form-message-success", "form-message-error");
-    messageElement.classList.add(`form-message-${type}`);
-}
-
-function setInputError(inputElement, message) {
-    inputElement.classList.add("form-input-error");
-    inputElement.parentElement.querySelector(".form-input-error-message").textContent = message;
-}
-
-function clearInputError(inputElement) {
-    inputElement.classList.remove("form-input-error");
-    inputElement.parentElement.querySelector(".form-input-error-message").textContent = "";
-}
-
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.querySelector("#login");
     const createAccountForm = document.querySelector("#createAccount");
@@ -87,14 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
     function submitForm() {
-        grecaptcha.ready(function() {
-            grecaptcha.execute('6LczKgAkAAAAAOi6dugV0lsqZckb1wg4TamxDZ3-', {action: 'homepage'}).then(function(token) {
-                if(token.length > 0) {
-                    return true;
-                }else{
-                    return false;
-                }
-            });
-        });
+        location.href = "success.html";
+        return true;
     }
 });
